@@ -1,5 +1,5 @@
 <template>
-  <div class="garden-register">注册员工</div>
+  <div class="space-jurisdiction">我的应用</div>
 </template>
 
 <script>

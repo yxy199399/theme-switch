@@ -12,8 +12,11 @@
         </ul>
       </el-header>
       <el-container>
-        <el-aside class="menu" width="auto">
+        <el-aside class="menu" width="200px">
           <el-menu
+            :background-color="Theme['colorPrimary']"
+            text-color="#fff"
+            active-text-color="#ddd"
             class="el-menu-vertical-demo"
             :default-active="activeIndex"
             router
@@ -26,7 +29,9 @@
             />
           </el-menu>
         </el-aside>
-        <el-main>Main</el-main>
+        <el-main>
+          <router-view />
+        </el-main>
       </el-container>
     </el-container>
     <el-dialog title="切换主题颜色" :visible.sync="dialogVisible" width="30%">
@@ -48,7 +53,7 @@ export default {
   components: {
     SidebarItem
   },
-  name: "Index",
+  label: "Index",
   data() {
     return {
       activeIndex: "",
@@ -60,137 +65,221 @@ export default {
         },
         {
           index: "/garden",
-          name: "园区中心",
+          label: "园区中心",
           icon: "el-icon-location",
           children: [
             {
-              index: "/production/product",
-              name: "产品发布",
+              index: "/garden/info",
+              label: "园区信息",
               icon: "el-icon-location"
             },
             {
-              index: "/production/issue",
-              name: "新增产品",
+              index: "/garden/company",
+              label: "入园企业",
+              icon: "el-icon-location"
+            },
+            {
+              index: "/garden/register",
+              label: "注册员工",
+              icon: "el-icon-location"
+            },
+            {
+              index: "/garden/organization",
+              label: "组织架构",
+              icon: "el-icon-location"
+            },
+            {
+              index: "/garden/screen",
+              label: "智慧大屏",
+              icon: "el-icon-location"
+            },
+            {
+              index: "/garden/bulletin",
+              label: "通知公告",
+              icon: "el-icon-location"
+            },
+            {
+              index: "/garden/news",
+              label: "新闻中心",
               icon: "el-icon-location"
             }
           ]
         },
         {
-          index: "/users",
-          name: "用户管理",
+          index: "/application",
+          label: "应用中心",
           icon: "el-icon-location",
           children: [
             {
-              index: "/users/management",
-              name: "用户管理",
+              index: "/application/garden",
+              label: "园区应用",
               icon: "el-icon-location"
             },
             {
-              index: "/users/check",
-              name: "角色审核",
+              index: "/application/monitoring",
+              label: "监控大盘",
               icon: "el-icon-location"
             },
             {
-              index: "/users/roleapply",
-              name: "角色申请",
+              index: "/application/template",
+              label: "模板管理",
               icon: "el-icon-location"
             },
             {
-              index: "/users/certification",
-              name: "实名认证",
+              index: "/application/licence",
+              label: "Licence",
               icon: "el-icon-location"
             },
             {
-              index: "/users/cy-certification",
-              name: "企业认证",
+              index: "/application/config",
+              label: "配置管理",
               icon: "el-icon-location"
             }
           ]
         },
         {
-          index: "/role",
-          name: "角色管理",
+          index: "/limits",
+          label: "权限中心",
+          icon: "el-icon-location",
+          children: [
+            {
+              index: "/limits/user",
+              label: "用户管理",
+              icon: "el-icon-location"
+            },
+            {
+              index: "/limits/role",
+              label: "角色管理",
+              icon: "el-icon-location"
+            },
+            {
+              index: "/limits/visitor",
+              label: "访客管理",
+              icon: "el-icon-location"
+            },
+            {
+              index: "/limits/data",
+              label: "数据权限",
+              icon: "el-icon-location"
+            }
+          ]
+        },
+        {
+          index: "/task",
+          label: "任务流程",
+          icon: "el-icon-location",
+          children: [
+            {
+              index: "/task/approve",
+              label: "待审批",
+              icon: "el-icon-location"
+            }
+          ]
+        },
+        {
+          index: "/company",
+          label: "企业中心",
+          icon: "el-icon-location",
+          children: [
+            {
+              index: "/company/info",
+              label: "企业信息",
+              icon: "el-icon-location"
+            },
+            {
+              index: "/company/employee",
+              label: "员工管理",
+              icon: "el-icon-location"
+            }
+          ]
+        },
+        {
+          index: "/space",
+          label: "我的空间",
+          icon: "el-icon-location",
+          children: [
+            {
+              index: "/space/app",
+              label: "我的应用",
+              icon: "el-icon-location"
+            },
+            {
+              index: "/space/authentication",
+              label: "企业认证信息",
+              icon: "el-icon-location"
+            },
+            {
+              index: "/space/jurisdiction",
+              label: "我的权限",
+              icon: "el-icon-location"
+            }
+          ]
+        },
+        {
+          index: "/platform",
+          label: "平台管理",
+          icon: "el-icon-location",
+          children: [
+            {
+              index: "/platform/register",
+              label: "园区注册",
+              icon: "el-icon-location"
+            },
+            {
+              index: "/platform/partner",
+              label: "合作伙伴",
+              icon: "el-icon-location"
+            },
+            {
+              index: "/platform/issue",
+              label: "园区发布",
+              icon: "el-icon-location"
+            },
+            {
+              index: "/platform/message",
+              label: "站内消息",
+              icon: "el-icon-location"
+            },
+            {
+              index: "/platform/help",
+              label: "帮助文档",
+              icon: "el-icon-location"
+            }
+          ]
+        },
+        {
+          index: "/user",
+          label: "用户中心",
+          icon: "el-icon-location",
+          children: [
+            {
+              index: "/user/info",
+              label: "个人信息",
+              icon: "el-icon-location"
+            },
+            {
+              index: "/user/message",
+              label: "站内消息",
+              icon: "el-icon-location"
+            }
+          ]
+        },
+        {
+          index: "/mian/help",
+          label: "帮助文档",
           icon: "el-icon-location"
         },
         {
-          index: "/resource",
-          name: "资源管理",
+          index: "/mian/opinion",
+          label: "意见反馈",
           icon: "el-icon-location"
-        },
-        {
-          index: "/ecological/apply",
-          name: "生态合作",
-          icon: "el-icon-location",
-          children: [
-            {
-              index: "/ecological/apply",
-              name: "合作申请",
-              icon: "el-icon-location"
-            },
-            {
-              index: "/ecological/applyList",
-              name: "合作列表",
-              icon: "el-icon-location"
-            },
-            {
-              index: "/ecological/manage",
-              name: "应用接入",
-              icon: "el-icon-location",
-              children: [
-                {
-                  index: "/ecological/manage",
-                  name: "规则管理",
-                  icon: "el-icon-location"
-                },
-                {
-                  index: "/ecological/register",
-                  name: "应用注册",
-                  icon: "el-icon-location",
-                  children: [
-                    {
-                      index: "/ecological/register",
-                      name: "资源注册",
-                      icon: "el-icon-location"
-                    },
-                    {
-                      index: "/ecological/audit",
-                      name: "应用注册审核",
-                      icon: "el-icon-location"
-                    }
-                  ]
-                },
-                {
-                  index: "/ecological/content",
-                  name: "应用管理",
-                  icon: "el-icon-location",
-                  children: [
-                    {
-                      index: "/ecological/content",
-                      name: "物联服务",
-                      icon: "el-icon-location"
-                    },
-                    {
-                      index: "/ecological/video",
-                      name: "视频服务",
-                      icon: "el-icon-location"
-                    },
-                    {
-                      index: "/ecological/gis",
-                      name: "GIS",
-                      icon: "el-icon-location"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
         }
       ],
       dialogVisible: false,
       defaultColor: this.Theme.colorPrimary
     };
   },
-  created() {
+  mounted() {
     console.log(process.env.VUE_APP_BASE_API);
   },
   methods: {
@@ -217,6 +306,16 @@ export default {
     line-height: 80px;
     cursor: pointer;
   }
+}
+.menu {
+  height: calc(100vh - 80px);
+  overflow-x: hidden;
+  .el-menu {
+    min-height: 100%;
+  }
+}
+.el-main {
+  height: calc(100vh - 80px);
 }
 .demonstration {
   float: left;

@@ -1,5 +1,5 @@
 <template>
-  <div class="garden-register">注册员工</div>
+  <div class="space-authentication">企业认证信息</div>
 </template>
 
 <script>

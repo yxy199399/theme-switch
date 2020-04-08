@@ -1,5 +1,5 @@
 <template>
-  <div class="garden-register">注册员工</div>
+  <div class="platform-message">站内发布</div>
 </template>
 
 <script>

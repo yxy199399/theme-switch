@@ -1,5 +1,5 @@
 <template>
-  <div class="garden-register">注册员工</div>
+  <div class="limits-data">数据管理</div>
 </template>
 
 <script>

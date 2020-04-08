@@ -1,5 +1,5 @@
 <template>
-  <div class="garden-register">注册员工</div>
+  <div class="company-info">企业信息</div>
 </template>
 
 <script>
