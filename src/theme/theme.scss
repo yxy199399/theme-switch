@@ -1,3 +1,9 @@
+// :root{
+//   --color-primary: rgb(9, 10, 10);
+// }
+// @function color($color-name) {
+//   @return var(--color-#{$color-name});
+// }
 /* 改变主题色变量 */
 $--color-primary: rgb(9, 10, 10);
 

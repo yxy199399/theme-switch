@@ -20,18 +20,28 @@
   </el-submenu>
 
   <!-- 当前节点不含子节点且非隐藏 -->
-  <el-menu-item v-else-if="!subroute.hidden" :index="subroute.index"
-    >{{ subroute.label }}
-  </el-menu-item>
+  <draggable
+    v-else-if="!subroute.hidden"
+    @dragstart="drag($event)"
+    @dragenter="dragEnter($event)"
+  >
+    <el-menu-item draggable="true" :index="subroute.index"
+      >{{ subroute.label }}
+    </el-menu-item>
+  </draggable>
 
-  <el-menu-item v-else :index="subroute.index"
-    >{{ subroute.label }}
-  </el-menu-item>
+  <draggable v-else @dragstart="drag($event)" draggable="true">
+    <el-menu-item :index="subroute.index">{{ subroute.label }} </el-menu-item>
+  </draggable>
 </template>
 
 <script>
+import draggable from "vuedraggable";
 export default {
   name: "SidebarItem",
+  components: {
+    draggable
+  },
   props: {
     subroute: {
       type: Object
@@ -56,6 +66,13 @@ export default {
     // handleClose: function(key, keyPath) {
     //   console.log(key, keyPath);
     // }
+    drag(event) {
+      console.log(event.target);
+      console.log(event.parent);
+    },
+    dragEnter(event) {
+      console.log(event);
+    }
   },
   mounted: function() {
     // console.log("sidebar route: ", this.routes);

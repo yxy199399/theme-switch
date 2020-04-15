@@ -7,14 +7,14 @@
       >
         <img class="logo" src="http://placehold.it/142x38/" alt="" />
         <ul class="top-nav">
-          <li @click="dialogVisible = true">切换主题颜色</li>
+          <theme-picker @change="themeChange"></theme-picker>
+          <!-- <li @click="dialogVisible = true">切换主题颜色</li> -->
           <li>帮助</li>
         </ul>
       </el-header>
       <el-container>
         <el-aside class="menu" width="200px">
           <el-menu
-            :background-color="Theme['colorPrimary']"
             text-color="#fff"
             active-text-color="#ddd"
             class="el-menu-vertical-demo"
@@ -49,9 +49,11 @@
 
 <script>
 import SidebarItem from "@/components/SidebarItem";
+import ThemePicker from "@/components/ThemePicker";
 export default {
   components: {
-    SidebarItem
+    SidebarItem,
+    ThemePicker
   },
   label: "Index",
   data() {
@@ -286,6 +288,12 @@ export default {
     onChange() {
       this.ThemeChange(this.defaultColor);
       this.dialogVisible = false;
+    },
+    themeChange(val) {
+      this.$store.dispatch("changeSetting", {
+        key: "theme",
+        value: val
+      });
     }
   }
 };
